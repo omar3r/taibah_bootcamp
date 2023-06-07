@@ -43,10 +43,13 @@
     <title>معسكر ناشئين طيبة 2</title>
 </head>
 <body>
+  <div class="box"> 
+    <img src="./logo.png"  alt="Example image"/> 
+  </div>
  
   <div class="base">
     <div class="container">
-        <header>معسكر ناشئين طيبة 2</header>
+        <header id="43">معسكر ناشئين طيبة 2</header>
         <script type ="text/javascript">var Submetted=false</script> 
         <iframe name="hiddenConfirme" id="hiddenConfirme" style="display: none; " onload="if(Submetted){window.location='submitted.html' ;}"></iframe>
         <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdyyrf988kovfNckGlQMsCYjr51IplYH6StGTvzCpQW0Ufblg/formResponse" name="myForm" method="post" target="hiddenConfirme" onsubmit="event.preventDefault(); validateMyForm();">
@@ -54,7 +57,7 @@
                 <div class="details personal">
                     <span class="title">المعلومات الشخصية</span>
 
-                    <div class="fields" id="43">
+                    <div class="fields" >
                         <div class="input-field">
                             <label>الإسم الثلاثي<label class="must">*</label></label>
                             
@@ -115,7 +118,7 @@
                         <div class="input-field">
                           <label>سنة الميلاد للمشترك<label class="must">*</label></label>
                          
-                          <input type="text" id="date-input" name= "entry.1328455680" placeholder="بالتاريخ الميلادي : 2010" >
+                          <input type="text" id="birthDate" name= "entry.1328455680" placeholder="بالتاريخ الميلادي : 2010" >
                           <div class="error"></div>
                       </div>
 
@@ -172,7 +175,7 @@
 
                        
                       <div class="input-field ">
-                            <label  >ماهي المسارات المهتم بها للتسجيل:<label class="must">*</label></label>
+                            <label id="checkedID"  >ماهي المسارات المهتم بها للتسجيل:<label class="must">*</label></label>
                             <div class="error"></div>
                             
 
@@ -301,10 +304,10 @@
                 
 
                     
-                    <div class="buttons">
-                        <div class="backBtn">
+                    <div class="buttons" href="#43">
+                        <div class="backBtn" >
                             <i class="uil uil-navigator"></i>
-                            <span class="btnText">الرجوع</span>
+                            <span class="btnText" >الرجوع</span>
                         </div>
                         
                         <button type="submit" class="submit" id="sub">

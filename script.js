@@ -9,6 +9,8 @@ const phoneNumber = document.getElementById('phoneNumber1');
 const forIdea = document.getElementById('textforidea') ; 
 const eductionQ = document.getElementById('edu1');
 const Ideapath2 = document.getElementById('path2') ;
+const birthDate = document.getElementById('birthDate');
+const checkedID = document.getElementById('checkedID');
 
 
 
@@ -16,7 +18,9 @@ const Ideapath2 = document.getElementById('path2') ;
 
 var eduction = document.getElementsByName('entry.906977649') ; 
 var Ideapath = document.getElementsByName('entry.1130702391') ;
+var checkpath = document.getElementsByName('entry.1602705367');
 const pathName = 'entry.1130702391' ;
+const checkpathName = 'entry.1602705367' ;
 
 
 
@@ -31,6 +35,7 @@ var isNext1 = false ;
 var isNext2 = false ; 
 var isNext3 = false ;
 var isNext4 = false ;
+var isNext5 = false ;
 
 
 var isValid1= false ;
@@ -41,8 +46,9 @@ var isValid2= false ;
 
 var radioValid = false;
 var radioValid2 = false;
+var radioValid3 = false;
 
-console.log(eduction.length);
+// console.log(eduction.length);
 
 
 
@@ -71,9 +77,24 @@ function validateradio2(m , valid) {
   
 }
 
+function validateChecklist(m ,valid ) {
+    var checkboxes = document.getElementsByName(m);
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+            valid = true;
+            break;
+        }
+    }
+    
+    return valid;
+}
+
+
+
+
 function validateMyForm()
 {
-   if(isValid1 == false )
+   if(isValid1 == false || isValid2 == false )
   { 
     
 
@@ -159,7 +180,7 @@ backBtn.addEventListener("click", () => form.classList.remove('secActive'));
 
 
 nextBtn.addEventListener( "click", () => document.getElementById('43').scrollIntoView()) ;
-
+backBtn.addEventListener( "click", () => document.getElementById('43').scrollIntoView()) ;
 
 
 
@@ -211,6 +232,9 @@ const validateInputs = () => {
     const usernameValue = username.value.trim();
     const emailValue = email.value.trim();
     const phoneNumberValue = phoneNumber.value.trim() ; 
+    const birthDateValue = birthDate.value.trim();
+    var number = parseInt(birthDate.value.trim())
+    
     
 
     if(usernameValue === '') {
@@ -256,12 +280,25 @@ const validateInputs = () => {
         setSuccess(eductionQ);
         isNext4 = true ;
         
-        
+        // 2015 and 2007
         
     }
 
+    if(number  <= 2007 || number >= 2015 ) {
+        setError(birthDate, 'التاريخ خاطئ');
+        form.classList.remove('secActive');
+    } else if(birthDateValue === ''){
 
-    if(isNext1 && isNext2 && isNext3 && isNext4){
+        setError(birthDate, 'التاريخ خاطئ');
+        form.classList.remove('secActive');
+    }
+    else {
+        setSuccess(birthDate);
+        isNext5=true ;
+    } 
+
+
+    if(isNext1 && isNext2 && isNext3 && isNext4 && isNext5 ){
         form.classList.add('secActive');
 
         
@@ -303,6 +340,19 @@ const validateInputs = () => {
             isValid1= true ;
             
         }
+
+        if(!validateChecklist(checkpathName , radioValid3)  ) {
+            form.classList.add('secActive')
+            setError(checkedID, 'يجب إختيار مسار واحد على الأقل');
+          //  console.log('wrong');
+            
+        } else {
+            setSuccess(checkedID);
+            isValid2= true ;
+            
+        }
+
+      
 
 
       /*  if(forIdeaValue === '' ) {
